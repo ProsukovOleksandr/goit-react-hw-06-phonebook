@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-const initialState = {
-  contacts: [],
-  filter: '',
-};
+import { initialState } from './constants';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const appSlice = createSlice({
   name: 'app',
@@ -14,21 +13,26 @@ const appSlice = createSlice({
     deleteContacts(state, action) {
       state.contacts = action.payload;
     },
-    setFilter(state, action) {
-      state.filter = action.payload;
-    },
   },
 });
 // Генератори екшенів
-export const { addContacts, deleteContacts, setFilter } = appSlice.actions;
+export const { addContacts, deleteContacts } = appSlice.actions;
 
 //Селектори
 export const selectContacts = state => state.app.contacts;
-export const selectFilter = state => state.app.filter;
+//export const selectFilter = state => state.app.filter;
 
 // Редюсер слайсу
-export const appReducer = appSlice.reducer;
 
+const persistConfig = {
+  key: 'app',
+  storage,
+};
+export const appReducer = appSlice.reducer;
+export const persistedAppReducer = persistReducer(
+  persistConfig,
+  appReducer,
+)
 //export const appReducer = (state = initialState, action) => {
 //  switch (action.type) {
 //   case 'app/setContacts': {
