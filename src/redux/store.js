@@ -1,5 +1,5 @@
 import { persistedAppReducer } from './appReducer';
-import { filterReducer } from './filterReducer';
+//import { filterReducer } from './filterReducer';
 import { 
   persistStore, 
   FLUSH,
@@ -13,7 +13,6 @@ import { configureStore } from '@reduxjs/toolkit';
 export const store = configureStore({
   reducer:{
     app: persistedAppReducer,
-    filter: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({

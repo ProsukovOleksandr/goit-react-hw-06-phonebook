@@ -13,22 +13,26 @@ const appSlice = createSlice({
     deleteContacts(state, action) {
       state.contacts = action.payload;
     },
+    setFilter(state, action) {
+      state.filter = action.payload;
+    },
   },
 });
 // Генератори екшенів
-export const { addContacts, deleteContacts } = appSlice.actions;
+export const { addContacts, deleteContacts,  setFilter } = appSlice.actions;
 
 //Селектори
 export const selectContacts = state => state.app.contacts;
-//export const selectFilter = state => state.app.filter;
-
+export const selectFilter = state => state.app.filter;
 // Редюсер слайсу
 
 const persistConfig = {
   key: 'app',
   storage,
+  blacklist: ['filter']
 };
 export const appReducer = appSlice.reducer;
+
 export const persistedAppReducer = persistReducer(
   persistConfig,
   appReducer,
