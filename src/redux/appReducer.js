@@ -19,7 +19,7 @@ const appSlice = createSlice({
   },
 });
 // Генератори екшенів
-export const { addContacts, deleteContacts,  setFilter } = appSlice.actions;
+export const { addContacts, deleteContacts, setFilter } = appSlice.actions;
 
 //Селектори
 export const selectContacts = state => state.app.contacts;
@@ -29,14 +29,11 @@ export const selectFilter = state => state.app.filter;
 const persistConfig = {
   key: 'app',
   storage,
-  blacklist: ['filter']
+  blacklist: ['filter'],
 };
 export const appReducer = appSlice.reducer;
 
-export const persistedAppReducer = persistReducer(
-  persistConfig,
-  appReducer,
-)
+export const persistedAppReducer = persistReducer(persistConfig, appReducer);
 //export const appReducer = (state = initialState, action) => {
 //  switch (action.type) {
 //   case 'app/setContacts': {
@@ -54,7 +51,7 @@ export const persistedAppReducer = persistReducer(
 //};
 //export const setContacts = (payload)=>{
 //  return {
- //   type:"app/addContacts",
+//   type:"app/addContacts",
 //    payload,
 //  }
 //}

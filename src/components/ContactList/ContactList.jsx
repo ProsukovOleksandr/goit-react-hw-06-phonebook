@@ -1,5 +1,5 @@
 import { ContactListItem } from './ContactListItem/ContactListItem';
-import { deleteContacts, selectContacts,selectFilter } from 'redux/appReducer';
+import { deleteContacts, selectContacts, selectFilter } from 'redux/appReducer';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,10 +12,10 @@ export const ContactList = () => {
     if (filter === '') {
       return contacts;
     } else {
-     return contacts.filter(contact =>
+      return contacts.filter(contact =>
         contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-   }
+      );
+    }
   };
 
   const handleDeleteContact = id => {

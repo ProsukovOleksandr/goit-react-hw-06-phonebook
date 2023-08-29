@@ -1,24 +1,25 @@
 import { persistedAppReducer } from './appReducer';
 //import { filterReducer } from './filterReducer';
-import { 
-  persistStore, 
+import {
+  persistStore,
   FLUSH,
   REHYDRATE,
   PAUSE,
   PERSIST,
   PURGE,
-  REGISTER, } from 'redux-persist';
+  REGISTER,
+} from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
-  reducer:{
+  reducer: {
     app: persistedAppReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 export const persistor = persistStore(store);

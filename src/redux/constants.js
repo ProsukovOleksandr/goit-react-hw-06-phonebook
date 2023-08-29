@@ -1,4 +1,4 @@
 export const initialState = {
-    contacts: [],
-    filter: "",
-  };
+  contacts: [],
+  filter: '',
+};
