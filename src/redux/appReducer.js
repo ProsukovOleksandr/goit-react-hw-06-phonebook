@@ -22,8 +22,8 @@ const appSlice = createSlice({
 export const { addContacts, deleteContacts, setFilter } = appSlice.actions;
 
 //Селектори
-export const selectContacts = state => state.app.contacts;
-export const selectFilter = state => state.app.filter;
+export const selectContacts = state => state.contacts;
+export const selectFilter = state => state.filter;
 // Редюсер слайсу
 
 const persistConfig = {

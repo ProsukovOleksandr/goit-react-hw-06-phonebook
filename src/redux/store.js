@@ -1,5 +1,4 @@
 import { persistedAppReducer } from './appReducer';
-//import { filterReducer } from './filterReducer';
 import {
   persistStore,
   FLUSH,
@@ -12,9 +11,8 @@ import {
 import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
-  reducer: {
-    app: persistedAppReducer,
-  },
+  reducer: persistedAppReducer,
+  
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
